@@ -1,0 +1,46 @@
+# Build
+target/
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# IDE / editor
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local Maven binary (download separately)
+.tools/
+
+# Agent / editor tooling (local only)
+.cursor/
+.agents/
+.opencode/
+AGENTS.md
+MEMORY.md
+RULE.md
+
+# Vaults, backups and secrets — never commit
+*.houdini
+*.houdini.db
+*.houdini.bak
+*.hbak
+*.env
+.env.*
+credentials.*
+secrets.*
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
