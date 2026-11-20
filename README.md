@@ -56,16 +56,25 @@ En Windows también puedes usar el launcher:
 launch-houdini-security.bat
 ```
 
-(Usa Maven embebido en `.tools/` si existe; si no, `mvn` del sistema.)
+(Prefiere `dist\desktop` si ya lo generaste; si no, Maven embebido en `.tools/` o `mvn` del sistema.)
 
-### Empaquetado (jpackage)
+### Empaquetado de escritorio (jar + launcher)
 
-Tras `mvn -DskipTests package` y un runtime con JavaFX:
+```powershell
+mvn -DskipTests package
+powershell -File .\scripts\stage-desktop-launcher.ps1
+```
+
+Eso deja un jar ejecutable y dependencias en `dist\desktop\` (ignorado por git; regenerable) y copia atajos al Escritorio. El entrypoint empaquetado es `com.houdinisecurity.Launcher`.
+
+### Empaquetado opcional (jpackage)
+
+Con JDK completo y JavaFX en el runtime:
 
 ```text
 jpackage --name HoudiniSecurity --input target ^
   --main-jar houdini-security-1.0.0-SNAPSHOT.jar ^
-  --main-class com.houdinisecurity.HoudiniApp --type app-image
+  --main-class com.houdinisecurity.Launcher --type app-image
 ```
 
 - Windows MSI: WiX + `--type msi`
